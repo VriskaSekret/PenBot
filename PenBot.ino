@@ -34,6 +34,9 @@ ezButton rightSwitch(4);
 
 void setup() {
   // put your setup code here, to run once:
+  pinMode(A3,OUTPUT);
+  pinMode(A4, OUTPUT);
+
   pinMode (leftPos, OUTPUT);
   pinMode(leftNeg, OUTPUT);
   pinMode (rightPos, OUTPUT);
@@ -90,6 +93,8 @@ void Stop(int time){
 void PenDown(){
   ballOnePos = 30;//30
   ballTwoPos = 30;//70
+  digitalWrite(A3, HIGH);
+  digitalWrite(A4, LOW);
   myservo.write(ballOnePos);
   balls.write(ballTwoPos);
   changed = false;
@@ -98,6 +103,8 @@ void PenDown(){
 void PenUp(){
   ballOnePos = 70;//70
   ballTwoPos = 70;//30
+  digitalWrite(A3, LOW);
+  digitalWrite(A4, HIGH);
   myservo.write(ballOnePos);
   balls.write(ballTwoPos);
   changed = false;
